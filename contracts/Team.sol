@@ -30,8 +30,8 @@ contract Team {
 
     constructor(string memory _subject, uint _token, string memory _name) {
         subject = _subject; // 과목명을 처음에 입력해서 정해놓는다.
-        teamMember.push(msg.sender); // 팀을 만드는 사람의 주소를 자동으로 push
         memberName.push(_name); // 팀장 이름을 push
+        teamMember.push(msg.sender); // 팀을 만드는 사람의 주소를 자동으로 push
         MT = new MyToken(_token); // _token은 totalsupply를 말하는 것.
     }
 
@@ -44,10 +44,10 @@ contract Team {
         return (teamMember.length, memberName.length);
     }
 
-    function setTeam(string memory _teamName, uint _eventNum) public {
-        Teams[teamNum+1] = team(subject, teamNum+1, _teamName, teamMember, _eventNum, MT.getTotalSupply());
-        teamNum+=1;
-    }
+    // function setTeam(string memory _teamName) private {
+    //     Teams[teamNum+1] = team(subject, teamNum+1, _teamName, teamMember, 0, MT.getTotalSupply());
+    //     teamNum+=1;
+    // }
 
     function getTeam(uint _num) public view returns(team memory) {
         return Teams[_num];
