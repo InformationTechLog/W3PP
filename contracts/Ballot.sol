@@ -63,21 +63,21 @@ contract Ballot is Team {
 
     address ranker = leader;
 
-    function ranking() public returns(address) {
-        for(uint i; i<Team.Teams[1].addr.length+1; i++) {
-            if(voting[ranker] > voting[Team.Teams[1].addr[i+1]]) {
-                ranker;
-            } else {
-                ranker = Team.Teams[1].addr[i+1];
+    function ranking() public returns(address, address, address, address, address) {
+        for(uint i; i<Team.teamMember.length-1; i++) {
+            for(uint j=1; j<Team.teamMember.length; j++) {
+                if(voting[Team.teamMember[i]] < voting[Team.teamMember[j]]) {
+                    (Team.teamMember[i], Team.teamMember[j]) = (Team.teamMember[j], Team.teamMember[i]);
+                }
             }
         }
 
-        return ranker;
+        return (Team.teamMember[0], Team.teamMember[1], Team.teamMember[2], Team.teamMember[3], Team.teamMember[4]);
 
-        // Team.Teams[1].addr[i]
+        // Team.teamMember[i]
     }
 
-    function what() public view returns(address) {
-        return Team.Teams[1].addr[0];
+    function what() public view returns(address, address, address, address, address) {
+        return (Team.teamMember[0], Team.teamMember[1], Team.teamMember[2], Team.teamMember[3], Team.teamMember[4]);
     }
 }
