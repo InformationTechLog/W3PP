@@ -14,12 +14,12 @@ contract Ballot is Team {
     mapping(uint => poll) Polls;
     uint tokenSum;
 
-    function setPoll(string memory _title) public {
+    function setPoll(string memory _title) public { // 투표 설정하기(몇번째투표인지, 투표이름, 그 투표에 걸린 토큰)
         Polls[pollNum+1] = poll(pollNum+1, _title, 0);
         pollNum+=1;
     }
 
-    function setToken(uint _num, uint _tpe) public {
+    function setToken(uint _num, uint _tpe) public { // 몇번째 투표에 토큰 몇개 걸지 설정
         Polls[_num].token = _tpe;
         tokenSum = tokenSum - _tpe;
     }
@@ -36,15 +36,15 @@ contract Ballot is Team {
         leader = msg.sender;
     }
 
-    function getTotal() public view returns(uint) {
+    function getTotal() public view returns(uint) {  // 토큰 총 공급량
         return MT.getTotalSupply();
     }
 
-    function getUserToken() public view returns(uint) {
+    function getUserToken() public view returns(uint) {  // 인당 토큰 몇 개 받을지
         return Team.Users[msg.sender].token;
     }
 
-    function setTeam(string memory _teamName) public {
+    function setTeam(string memory _teamName) public { // 팀 설정(수업명, 팀번호, 팀이름, 팀멤버주소, 투표개수, 총공급량)
         Teams[teamNum+1] = team(subject, teamNum+1, _teamName, teamMember, pollNum, MT.getTotalSupply());
         teamNum+=1;
     }
@@ -61,7 +61,7 @@ contract Ballot is Team {
         return voting[_addr];
     }
 
-    address ranker = leader;
+    // address ranker = leader;
 
     function ranking() public returns(address, address, address, address, address) {
         for(uint i; i<Team.teamMember.length-1; i++) {
