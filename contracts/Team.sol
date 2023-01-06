@@ -4,7 +4,7 @@ pragma solidity 0.8.0;
 import "./Token.sol";
 
 contract Team {
-    // 팀 구조체의 구조 : 수업이름, 팀넘버, 팀이름, 주소배열, 이벤트개수, 토큰수
+    // 팀 구조체의 구조 : 수업이름, 팀넘버, 팀이름, 팀원의 주소가 담긴 배열, 안건개수, 토큰총발행량
     struct team {
         string subjectName;
         uint teamNumber;
@@ -23,6 +23,7 @@ contract Team {
         string name;
         address addr;
         uint token;
+        uint point;
     }
     mapping(address => user) Users;
 
@@ -55,7 +56,7 @@ contract Team {
 
     function setUser() public {  // struct user 설정하기
         for(uint i; i<teamMember.length; i++) {
-            Users[teamMember[i]] = user(memberName[i], teamMember[i], 10);
+            Users[teamMember[i]] = user(memberName[i], teamMember[i], 0, 100);
         }
     }
 
