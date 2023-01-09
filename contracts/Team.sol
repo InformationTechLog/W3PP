@@ -35,32 +35,4 @@ contract Team {
         teamMember.push(msg.sender); // 팀을 만드는 사람의 주소를 자동으로 push
         MT = new MyToken(_token); // _token은 totalsupply를 말하는 것.
     }
-
-    function setAddrName(address _addr, string memory _name) public { // 주소와 이름 넣어주기
-        teamMember.push(_addr);
-        memberName.push(_name);
-    }
-
-    function getAddrName() public view returns(uint, uint) { 
-        return (teamMember.length, memberName.length);
-    }
-
-    // function setTeam(string memory _teamName) private {
-    //     Teams[teamNum+1] = team(subject, teamNum+1, _teamName, teamMember, 0, MT.getTotalSupply());
-    //     teamNum+=1;
-    // }
-
-    function getTeam(uint _num) public view returns(team memory) {
-        return Teams[_num];
-    }
-
-    function setUser() public {  // struct user 설정하기
-        for(uint i; i<teamMember.length; i++) {
-            Users[teamMember[i]] = user(memberName[i], teamMember[i], 0, 100);
-        }
-    }
-
-    function getUser(address _addr) public view returns(user memory) {
-        return Users[_addr];
-    }
 }
