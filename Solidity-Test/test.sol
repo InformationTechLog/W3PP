@@ -6,7 +6,7 @@ contract signUp {
         bytes32 pw;
 
         string name;
-        uint age;
+        uint snum;
 
         bool registered; // default : false
     }
@@ -19,11 +19,11 @@ contract signUp {
     }
 
     // 회원 가입 코드
-    function register(string memory id, string memory pw, string memory name, uint age) public {
+    function register(string memory id, string memory pw, string memory name, uint snum) public {
         // accounts[id].registered == false
         require(!accounts[id].registered, "id is already registered");
         
-        accounts[id] = user(encrypt(pw), name, age, true);
+        accounts[id] = user(encrypt(pw), name, snum, true);
     }
 
     // 2번의 검증, 먼저 id가 등록되었는가, 그 다음에 id-pw가 일치하는가
@@ -36,7 +36,7 @@ contract signUp {
     function login(string memory id, string memory pw) public view returns(string memory, uint) {
         // 위의 verifyAccount
         verifyAccount(id, pw);
-        return (accounts[id].name, accounts[id].age);
+        return (accounts[id].name, accounts[id].snum);
     }
 
     // 멤버를 삭제하는 기능

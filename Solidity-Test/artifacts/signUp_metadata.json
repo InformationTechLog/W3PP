@@ -53,7 +53,7 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "age",
+						"name": "snum",
 						"type": "uint256"
 					}
 				],
@@ -109,11 +109,11 @@
 	},
 	"sources": {
 		"Solidity-Test/test.sol": {
-			"keccak256": "0x15a223034f4de07a0cbb48abfb656196cdc44d012006a901bb6a9e2be5d20a5d",
+			"keccak256": "0x3239275f0b931836736a28b63138ba6b6b9e649cec8191b4a0d08d02a3a5e755",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://7928ecf1c85d8d126f8d93102881fb8cce3434783ad03bf9086a27daba9ec908",
-				"dweb:/ipfs/QmPxeMmreaBYqzpRW7dqeTnuPfDB1E36D4nsrQD5R3jjoQ"
+				"bzz-raw://21c22921f3679e690e1eccf2b580d3306a65b958a9a4c825c6ea7f74f347108c",
+				"dweb:/ipfs/QmRWYHEo7pkMiMivRC5279mVSZcPcr6FtnHtJeMEjHbpsV"
 			]
 		}
 	},
