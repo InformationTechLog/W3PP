@@ -63,7 +63,7 @@ contract Ballot is Team {
         pollNum+=1;
     }
 
-    function setPoint(uint _num, uint _tpe) public validPhase(Phase.Regs) onlyLeader { // _num : 몇번째 안건인지, _tpe : 그 안건에 토큰 몇개 걸지
+    function setToken(uint _num, uint _tpe) public validPhase(Phase.Regs) onlyLeader { // _num : 몇번째 안건인지, _tpe : 그 안건에 토큰 몇개 걸지
         Polls[_num].token = _tpe;
         tokenSum = tokenSum - _tpe;
     }
